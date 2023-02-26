@@ -1644,7 +1644,7 @@ PODIR ?= po
 refresh-po:
 	rm -f $(PODIR)/*.po && \
 	echo "$(ME): getting translations into po (please ignore the robots.txt ERROR 404)..." && \
-	wget --no-verbose --directory-prefix $(PODIR) --no-directories --recursive --level 1 --accept .po --accept .po.1 $(POURL) && \
+	wget --e robots=off -no-verbose --directory-prefix $(PODIR) --no-directories --recursive --level 1 --accept .po --accept .po.1 $(POURL) && \
 	echo 'en@boldquot' > $(PODIR)/LINGUAS && \
 	echo 'en@quot' >> $(PODIR)/LINGUAS && \
 	ls $(PODIR)/*.po | $(SED) 's/\.po//;s,$(PODIR)/,,' | \
